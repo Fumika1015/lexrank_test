@@ -209,6 +209,22 @@ def summarize(sentences, sent_limit=None, char_limit=None, imp_require=None, **l
 
     return [sentences[i] for i in sorted(indexes)]
 
+def text_format(text):
+    print(text)
+    #lines = text.split('\n')
+    #for line in lines:
+    #    print(line)
+    #    print(type(line))
+    #    match_text = re.match(r"\[質問内容\]", line)
+    #    if match_text:
+    #        pass
+    #    else:
+    #        line = ""
+    #print(lines)
+
+    text = re.sub(r"\[.*\].*", "", text)
+
+    print(text)
 
 if __name__ == '__main__':
     def _get_bocchan_text():
@@ -241,18 +257,20 @@ if __name__ == '__main__':
     #text = _get_bocchan_text()
     text = _get_commandline_text()
 
-    result = summarize(text, char_limit=200)
-    print('\n\nsummarize(char_limit=200)')
-    print('\n'.join(result))
+    format_text = text_format(text)
 
-    result = summarize(text, sent_limit=3)
-    print('\n\nsummarize(sent_limit=3)')
-    print('\n'.join(result))
+    #result = summarize(text, char_limit=200)
+    #print('\n\nsummarize(char_limit=200)')
+    #print('\n'.join(result))
 
-    result = summarize(text, char_limit=200, continuous=True)
-    print('\n\nsummarize(char_limit=200, continuous=True)')
-    print('\n'.join(result))
+    #result = summarize(text, sent_limit=3)
+    #print('\n\nsummarize(sent_limit=3)')
+    #print('\n'.join(result))
 
-    result = summarize(text, sent_limit=3, continuous=True)
-    print('\n\nsummarize(sent_limit=3, continuous=True)')
-    print('\n'.join(result))
+    #result = summarize(text, char_limit=200, continuous=True)
+    #print('\n\nsummarize(char_limit=200, continuous=True)')
+    #print('\n'.join(result))
+
+    #result = summarize(text, sent_limit=3, continuous=True)
+    #print('\n\nsummarize(sent_limit=3, continuous=True)')
+    #print('\n'.join(result))
